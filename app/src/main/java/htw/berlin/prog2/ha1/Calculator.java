@@ -125,27 +125,19 @@ public class Calculator {
      */
     public void pressEqualsKey() {
 
-        if(!equalsUsed) {
-            var result = switch (latestOperation) {
-                case "+" -> latestValue + Double.parseDouble(screen);
-                case "-" -> latestValue - Double.parseDouble(screen);
-                case "x" -> latestValue * Double.parseDouble(screen);
-                case "/" -> latestValue / Double.parseDouble(screen);
-                default -> throw new IllegalArgumentException();
+        var result = switch (latestOperation) {
+            case "+" -> latestValue + Double.parseDouble(screen);
+            case "-" -> latestValue - Double.parseDouble(screen);
+            case "x" -> latestValue * Double.parseDouble(screen);
+            case "/" -> latestValue / Double.parseDouble(screen);
+            default -> throw new IllegalArgumentException();
 
-            };
-            screen = Double.toString(result);
-            if (screen.equals("Infinity")) screen = "Error";
-            if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
-            if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-            equalsUsed = true;
-        } else if (equalsUsed == true) {
-
-            System.out.println(screen);
-
-        }
-        // Die if-Schleife bewirkt, dass man die Methode pressEqualsKey nur ein einziges mal benutzen kann
-
+        };
+        screen = Double.toString(result);
+        if (screen.equals("Infinity")) screen = "Error";
+        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+        if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        equalsUsed = true;
 
 
 
