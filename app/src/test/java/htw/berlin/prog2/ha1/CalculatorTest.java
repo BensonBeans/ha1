@@ -126,5 +126,27 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    // Aufgabe 2
+    @Test
+    @DisplayName("should not be able to use the equals button multiple times")
+    void lol() {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+
+        String expected = "4";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+
+    }
+
 }
 
