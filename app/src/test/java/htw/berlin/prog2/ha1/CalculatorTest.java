@@ -109,5 +109,22 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    // Aufgabe 2
+    @Test
+    @DisplayName("cant use negative numbers before using operation key´s")
+    void testOperationKeyInsteadOfNumber() {
+        Calculator calc = new Calculator();
+
+
+        calc.pressDigitKey(-3);
+        calc.pressUnaryOperationKey("%");
+
+
+        String expected = "-0.03";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
