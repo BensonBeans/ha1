@@ -111,16 +111,22 @@ class CalculatorTest {
 
     // Aufgabe 2
     @Test
-    @DisplayName("cant use negative numbers before using operation key´s")
+    @DisplayName("values are able to be saved")
     void testOperationKeyInsteadOfNumber() {
         Calculator calc = new Calculator();
 
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
 
-        calc.pressDigitKey(-3);
-        calc.pressUnaryOperationKey("%");
+        calc.valueStorage("M+");
+
+        calc.valueStorage("M");
 
 
-        String expected = "-0.03";
+
+        String expected = "3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);

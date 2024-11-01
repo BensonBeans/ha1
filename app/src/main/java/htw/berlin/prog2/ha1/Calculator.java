@@ -1,5 +1,7 @@
 package htw.berlin.prog2.ha1;
 
+import java.util.ArrayList;
+
 /**
  * Eine Klasse, die das Verhalten des Online Taschenrechners imitiert, welcher auf
  * https://www.online-calculator.com/ aufgerufen werden kann (ohne die Memory-Funktionen)
@@ -15,6 +17,10 @@ public class Calculator {
     private String latestOperation = "";
 
     private boolean equalsUsed = false;
+    
+    private String storageView = "";
+
+    private ArrayList<Double> storage = new ArrayList<>();
 
     /**
      * @return den aktuellen Bildschirminhalt als String
@@ -142,4 +148,23 @@ public class Calculator {
 
 
     }
+
+    public void valueStorage(String storageView) {
+
+
+        switch(storageView) {
+
+        case "M" -> {
+            if (!storage.isEmpty()) {
+                System.out.println(storage.get(storage.size() - 1));
+            } else {
+                System.out.println(storage.get(0));
+            }
+        }
+        case "M+" -> storage.add(latestValue);
+    };
+
+
+
+}
 }
